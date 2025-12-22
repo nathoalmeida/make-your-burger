@@ -86,7 +86,7 @@
       "opcionais": [
         "Bacon"
       ],
-      "status": "Solicitado"
+      "status": "Em produção"
     },
     {
       "id": "79d7",
@@ -124,7 +124,17 @@
         "Tomate",
         "Cheddar"
       ],
-      "status": "Solicitado"
+      "status": "Em produção"
+    },
+    {
+      "id": "8708",
+      "nome": "Ian",
+      "pao": "3 Queijos",
+      "carne": "Alcatra",
+      "opcionais": [
+        "Cheddar"
+      ],
+      "status": "Finalizado"
     }
   ]
 }

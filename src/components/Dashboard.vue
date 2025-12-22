@@ -22,9 +22,9 @@
                     </ul>
                 </div>
                 <div>
-                    <select name="status" class="status">
+                    <select name="status" class="status" @change="updateBurger(burger.id, $event)">
                     <option value="">Selecione</option>
-                    <option v-for="s in status" :key="s.id" value="s.tipo" :selected="burger.status == s.tipo">{{ s.tipo }}</option>
+                    <option v-for="s in status" :key="s.id" :value="s.tipo" :selected="burger.status == s.tipo">{{ s.tipo }}</option>
                     </select>
                     <button class="delete-btn" @click="deleteBurger(burger.id)">Cancelar</button>
                 </div>
@@ -72,6 +72,26 @@
 
         // msg (pode puxar os demais id burgers e refazer a lista sem fazer nova requisição)
         getPedidos();
+    }
+
+    const updateBurger = async (id: String, e: Event) => {
+        const option = e.target as HTMLSelectElement;
+
+        const dataJson = JSON.stringify({
+            status: option.value
+        });
+
+        const req = await fetch(`http://localhost:3000/burgers/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: dataJson
+        });
+
+        const res = await req.json();
+
+        console.log(res);
     }
 
     onMounted( () => {
