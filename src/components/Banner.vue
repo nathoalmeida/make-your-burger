@@ -5,8 +5,7 @@
 </template>
 
 <script setup lang="ts">
-    defineOptions({ name: 'Banner' })
-
+defineOptions({ name: 'Banner' })
 </script>
 
 <style scoped>

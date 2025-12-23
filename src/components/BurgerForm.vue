@@ -37,64 +37,64 @@
 </template>
 
 <script setup lang="ts">
-    import { onMounted, ref } from 'vue';
-    import Message from './Message.vue';
-    defineOptions({ name: 'BurgerForm'})
+import { onMounted, ref } from 'vue'
+import Message from './Message.vue'
 
-    const paes = ref(null);
-    const carnes = ref(null);
-    const opcionaisdata = ref(null);
-    const nome = ref(null);
-    const pao =  ref(null);
-    const carne =  ref(null);
-    const opcionais = ref([]);
-    const status = ref("Solicitado");
-    const msg = ref(null);
+defineOptions({ name: 'BurgerForm'})
 
-    const getIngredients = async () => {
-        const req = await fetch('http://localhost:3000/ingredientes');
-        const data = await req.json();
-
-        paes.value = data.paes;
-        carnes.value = data.carnes;
-        opcionaisdata.value = data.opcionais;  
-    }
-
-    const createBurger = async () => {
-        const data = {
-            nome: nome.value,
-            pao: pao.value,
-            carne: carne.value,
-            opcionais: Array.from(opcionais.value),
-            status: "Solicitado"
-        };
-
-        const dataJson = JSON.stringify(data);
-
-        const req = await fetch('http://localhost:3000/burgers', {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: dataJson
-        })
-
-        const res = await req.json();
-        
-        // mensagem do sistema
-        msg.value = 'Pedido realizado com sucesso';
-
-        // limpar mensagem da tela
-        setTimeout(() => msg.value = "", 3000);
-        // limpar os campos
-        nome.value = "";
-        pao.value = "";
-        carne.value = "";
-        opcionais.value = [];
-    }
+const paes = ref<string[] | null>(null)
+const carnes = ref<string[] | null>(null)
+const opcionaisdata = ref<string[] | null>(null)
+const nome = ref<string>("")
+const pao =  ref<string>("")
+const carne =  ref<string>("")
+const opcionais = ref<string>("")
+const status = ref<string>("Solicitado")
+const msg = ref<string | null>(null)
 
     onMounted(() => {
-        getIngredients();
+    getIngredients()
+})
+
+const getIngredients = async () => {
+    const req = await fetch('http://localhost:3000/ingredientes')
+    const data = await req.json()
+
+    paes.value = data.paes
+    carnes.value = data.carnes
+    opcionaisdata.value = data.opcionais 
+}
+
+const createBurger = async () => {
+    const data = {
+        nome: nome.value,
+        pao: pao.value,
+        carne: carne.value,
+        opcionais: Array.from(opcionais.value),
+        status: "Solicitado"
+    }
+
+    const dataJson = JSON.stringify(data)
+
+    const req = await fetch('http://localhost:3000/burgers', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: dataJson
     })
 
+    const res = await req.json()
+        
+    // mensagem do sistema
+    msg.value = 'Pedido realizado com sucesso'
+
+    // limpar mensagem da tela
+    setTimeout(() => msg.value = "", 3000)
+    // limpar os campos
+    nome.value = ""
+    pao.value = ""
+    carne.value = ""
+    opcionais.value = []
+}
 </script>
 
 <style scoped>

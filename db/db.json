@@ -89,29 +89,6 @@
       "status": "Em produção"
     },
     {
-      "id": "79d7",
-      "nome": "Oi",
-      "pao": "Integral",
-      "carne": "Picanha",
-      "opcionais": [
-        "Bacon",
-        "Tomate"
-      ],
-      "status": "Solicitado"
-    },
-    {
-      "id": "e100",
-      "nome": "Nathalia",
-      "pao": "Integral",
-      "carne": "Veggie burger",
-      "opcionais": [
-        "Tomate",
-        "Pepino",
-        "Cebola roxa"
-      ],
-      "status": "Solicitado"
-    },
-    {
       "id": "0dbd",
       "nome": "Nathi",
       "pao": "3 Queijos",
@@ -135,6 +112,25 @@
         "Cheddar"
       ],
       "status": "Finalizado"
+    },
+    {
+      "id": "5395",
+      "nome": "Teste",
+      "pao": "Italiano Branco",
+      "carne": "Maminha",
+      "opcionais": [
+        "Bacon",
+        "Cheddar"
+      ],
+      "status": "Solicitado"
+    },
+    {
+      "id": "b423",
+      "nome": "Teste2",
+      "pao": "Parmesão e Orégano",
+      "carne": "Maminha",
+      "opcionais": [],
+      "status": "Solicitado"
     }
   ]
 }

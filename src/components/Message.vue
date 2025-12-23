@@ -5,9 +5,8 @@
 </template>
 
 <script setup lang="ts">
-    defineOptions({name: "Message"})
-    defineProps({ msg: String })
-
+defineOptions({name: "Message"})
+defineProps<{msg: string | null}>()
 </script>
 
 <style scoped>

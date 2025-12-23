@@ -6,7 +6,9 @@
 </template>
 
 <script setup lang="ts">
-import Dashboard from '../components/Dashboard.vue';
+/* Imports */
+import Dashboard from '../components/Dashboard.vue'
 
-    defineOptions({ name: 'Pedidos' })
+/* defines */
+defineOptions({ name: 'Pedidos' })
 </script>

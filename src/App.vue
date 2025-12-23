@@ -5,14 +5,17 @@
 </template>
 
 <script setup lang="ts">
-  import {ref} from 'vue';
+ /* Imports */
+import {ref} from 'vue'
+import Navbar from './components/Navbar.vue'
+import Footer from './components/Footer.vue'
 
-  defineOptions({ name: 'App'})
-  import Navbar from './components/Navbar.vue';
-  import Footer from './components/Footer.vue';
+/* defines */
+defineOptions({ name: 'App'})
 
-  const logo_src = ref("/img/logo.png");
-  const app_name = ref("Make Your Burger");
+/* constants & variables */
+const logo_src = ref("/img/logo.png")
+const app_name = ref("Make Your Burger")
 </script>
 
 
