@@ -42,12 +42,12 @@ import Message from './Message.vue'
 
 defineOptions({ name: 'BurgerForm'})
 
-const paes = ref<string[] | null>(null)
-const carnes = ref<string[] | null>(null)
-const opcionaisdata = ref<string[] | null>(null)
+const paes = ref<Ingrediente[] | null>(null)
+const carnes = ref<Ingrediente[] | null>(null)
+const opcionaisdata = ref<Ingrediente[] | null>(null)
 const nome = ref<string>("")
-const pao =  ref<string>("")
-const carne =  ref<string>("")
+const pao =  ref<Ingrediente | null>(null)
+const carne =  ref<Ingrediente | null>(null)
 const opcionais = ref<string[]>([])
 const status = ref<string>("Solicitado")
 const msg = ref<string | null>(null)
@@ -62,7 +62,7 @@ const getIngredients = async () => {
 
     paes.value = data.paes
     carnes.value = data.carnes
-    opcionaisdata.value = data.opcionais 
+    opcionaisdata.value = data.opcionais
 }
 
 const createBurger = async () => {
@@ -70,7 +70,7 @@ const createBurger = async () => {
         nome: nome.value,
         pao: pao.value,
         carne: carne.value,
-        opcionais: Array.from(opcionais.value),
+        opcionais: opcionais.value,
         status: "Solicitado"
     }
 
@@ -83,7 +83,7 @@ const createBurger = async () => {
     })
 
     const res = await req.json()
-        
+
     // mensagem do sistema
     msg.value = 'Pedido realizado com sucesso'
 
@@ -91,10 +91,15 @@ const createBurger = async () => {
     setTimeout(() => msg.value = "", 3000)
     // limpar os campos
     nome.value = ""
-    pao.value = ""
-    carne.value = ""
+    pao.value = null
+    carne.value = null
     opcionais.value = []
 }
+
+  interface Ingrediente {
+    id: number;
+    tipo: string;
+  }
 </script>
 
 <style scoped typed="scss">
