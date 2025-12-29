@@ -22,26 +22,26 @@ const props = defineProps({logo: String, alt: String})
         display: flex;
         justify-content: flex-end;
         align-items: center;
-    }
 
-    #nav #logo-url {
-        margin: auto;
-        margin-left: 0;
+        #logo-url {
+            margin: auto;
+            margin-left: 0;
+        }
+
+        a {
+            color: #fcba03;
+            text-decoration: none;
+            margin: 12px;
+            transition: .5s;
+        }
+
+        a:hover {
+            color: #fff;
+        }
     }
 
     #logo {
         width:40px;
         height: 40px;
-    }
-
-    #nav a {
-        color: #fcba03;
-        text-decoration: none;
-        margin: 12px;
-        transition: .5s;
-    }
-
-    #nav a:hover {
-        color: #fff
     }
 </style>

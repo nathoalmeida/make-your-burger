@@ -36,8 +36,23 @@
 
 <script setup lang="ts">
 /* Imports */
-import { onMounted, ref } from 'vue';
-import Message from './Message.vue';
+import { onMounted, ref } from 'vue'
+import Message from './Message.vue'
+
+/* Types & Interfaces */
+interface Burger {
+    id: string;
+    nome: string;
+    pao: string;
+    carne: string;
+    opcionais: string[];
+    status: string;
+}
+
+interface Status {
+    id: number;
+    tipo: string;
+}
 
 /* defines */
 defineOptions({ name: 'Dashboard'})
@@ -101,20 +116,6 @@ const updateBurger = async (id: String, e: Event) => {
     msg.value = 'O pedido ' + id + ' foi atualizado para o status: ' + option.value
     setTimeout(() => msg.value = "", 3000)
 }
-
-  interface Burger {
-    id: string;
-    nome: string;
-    pao: string;
-    carne: string;
-    opcionais: string[];
-    status: string;
-  }
-
-  interface Status {
-    id: number;
-    tipo: string;
-  }
 </script>
         
 <style scoped typed="scss">
@@ -133,16 +134,20 @@ const updateBurger = async (id: String, e: Event) => {
         font-weight: bold;
         padding: 12px;
         border-bottom: 3px solid #333;
-    }
 
-    #burger-table-heading div, .burger-table-row div {
-        width: 19%;
+        div {
+            width: 19%;
+        }
     }
 
     .burger-table-row {
         width: 100%;
         padding: 12px;
         border-bottom: 1px solid #ccc;
+
+        div {
+            width: 19%;
+        }
     }
 
     #burger-table-heading .order-id,
@@ -165,10 +170,10 @@ const updateBurger = async (id: String, e: Event) => {
         margin: 0 auto;
         cursor: pointer;
         transition: .5s;
-    }
 
-    .delete-btn:hover {
-        background-color: transparent;
-        color: #222;
+        &:hover {
+            background-color: transparent;
+            color: #222;
+        }
     }
 </style>

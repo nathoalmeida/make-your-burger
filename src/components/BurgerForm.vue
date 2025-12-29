@@ -40,6 +40,12 @@
 import { onMounted, ref } from 'vue'
 import Message from './Message.vue'
 
+
+interface Ingrediente {
+    id: number;
+    tipo: string;
+}
+
 defineOptions({ name: 'BurgerForm'})
 
 const paes = ref<Ingrediente[] | null>(null)
@@ -52,7 +58,7 @@ const opcionais = ref<string[]>([])
 const status = ref<string>("Solicitado")
 const msg = ref<string | null>(null)
 
-    onMounted(() => {
+onMounted(() => {
     getIngredients()
 })
 
@@ -95,11 +101,6 @@ const createBurger = async () => {
     carne.value = null
     opcionais.value = []
 }
-
-  interface Ingrediente {
-    id: number;
-    tipo: string;
-  }
 </script>
 
 <style scoped typed="scss">
@@ -141,15 +142,15 @@ const createBurger = async () => {
         align-items: flex-start;
         width: 50%;
         margin-bottom: 20px;
-    }
 
-    .checkbox-container span, .checkbox-container input {
-        width: auto;
-    }
+        span, input {
+            width: auto;
+        }
 
-    .checkbox-container span {
-        margin-left: 6px;
-        font-weight: bold;
+        span {
+            margin-left: 6px;
+            font-weight: bold;
+        }
     }
 
     .submit-btn {
@@ -162,10 +163,10 @@ const createBurger = async () => {
         margin: 0 auto;
         cursor: pointer;
         transition: .5s;
-    }
 
-    .submit-btn:hover {
-        background-color: transparent;
-        color: #222;
+        &:hover {
+            background-color: transparent;
+            color: #222;
+        }
     }
 </style>

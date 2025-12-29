@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-  defineOptions({ name: 'Footer'})
+defineOptions({ name: 'Footer'})
 </script>
 
 <style scoped typed="scss">

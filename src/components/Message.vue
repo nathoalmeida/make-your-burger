@@ -19,6 +19,4 @@ defineProps<{msg: string | null}>() // <- usar desse jeito aqui
         max-width: 400px;
         margin: 30px auto;
     }
-
-
 </style>
