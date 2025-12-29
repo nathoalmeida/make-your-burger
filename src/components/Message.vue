@@ -1,22 +1,22 @@
 <template>
-    <div class="message-container">
-        <p>{{ msg }}</p>
-    </div>
+  <div class="message-container">
+    <p>{{ msg }}</p>
+  </div>
 </template>
 
 <script setup lang="ts">
-defineOptions({name: "Message"})
-defineProps<{msg: string | null}>() // <- usar desse jeito aqui 
+defineOptions({ name: 'Message' })
+defineProps<{ msg: string | null }>() // <- usar desse jeito aqui
 </script>
 
-<style scoped typed="scss">
-    .message-container {
-        color: #004085;
-        background-color: #cce5ff;
-        border: 2px solid #b8daff;
-        border-radius: 5px;
-        padding: 10px;
-        max-width: 400px;
-        margin: 30px auto;
-    }
+<style scoped lang="scss">
+.message-container {
+  color: #004085;
+  background-color: #cce5ff;
+  border: 2px solid #b8daff;
+  border-radius: 5px;
+  padding: 10px;
+  max-width: 400px;
+  margin: 30px auto;
+}
 </style>

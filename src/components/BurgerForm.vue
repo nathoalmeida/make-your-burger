@@ -1,172 +1,172 @@
 <template>
+  <div>
+    <Message :msg="msg" v-show="msg" />
     <div>
-        <Message :msg="msg" v-show="msg" />
-        <div>
-            <form id="burger-form"  @submit.prevent="createBurger">
-                <div class="input-container">
-                    <label for="nome">Nome do cliente:</label>
-                    <input type="text" id="nome" name="nome" v-model="nome" placeholder="Digite o seu nome"></input>
-                </div>
-                <div class="input-container">
-                    <label for="pao">Escolha o pão:</label>
-                    <select name="pao" id="pao" v-model="pao">
-                        <option value="">Selecione o seu pão</option>
-                        <option v-for="pao in paes" :key="pao.id" :value="pao.tipo">{{ pao.tipo }}</option>
-                    </select>
-                </div>
-                 <div class="input-container">
-                    <label for="carne">Escolha a carne do seu burger:</label>
-                    <select name="carne" id="carne" v-model="carne">
-                        <option value="">Selecione o tipo de carne</option>
-                         <option v-for="carne in carnes" :key="carne.id" :value="carne.tipo">{{ carne.tipo }}</option>
-                    </select>
-                </div>
-                  <div id="opcionais-container" class="input-container">
-                    <label id="opcionais-title" for="opcionais">Selecione os opcionais:</label>
-                    <div class="checkbox-container" v-for="opcional in opcionaisdata" :key="opcional.id">
-                        <input type="checkbox" name="opcionais" v-model="opcionais" :value="opcional.tipo">
-                        <span>{{ opcional.tipo }}</span>
-                    </div>
-                </div>
-                <div class="input-container">
-                    <input type="submit" class="submit-btn" value="Criar meu Burger!">
-                </div>
-            </form>
+      <form id="burger-form" @submit.prevent="createBurger">
+        <div class="input-container">
+          <label for="nome">Nome do cliente:</label>
+          <input type="text" id="nome" name="nome" v-model="nome" placeholder="Digite o seu nome"></input>
         </div>
+        <div class="input-container">
+          <label for="pao">Escolha o pão:</label>
+          <select name="pao" id="pao" v-model="pao">
+            <option value="">Selecione o seu pão</option>
+            <option v-for="pao in paes" :key="pao.id" :value="pao.tipo">{{ pao.tipo }}</option>
+          </select>
+        </div>
+        <div class="input-container">
+          <label for="carne">Escolha a carne do seu burger:</label>
+          <select name="carne" id="carne" v-model="carne">
+            <option value="">Selecione o tipo de carne</option>
+            <option v-for="carne in carnes" :key="carne.id" :value="carne.tipo">{{ carne.tipo }}</option>
+          </select>
+        </div>
+        <div id="opcionais-container" class="input-container">
+          <label id="opcionais-title" for="opcionais">Selecione os opcionais:</label>
+          <div class="checkbox-container" v-for="opcional in opcionaisdata" :key="opcional.id">
+            <input type="checkbox" name="opcionais" v-model="opcionais" :value="opcional.tipo">
+            <span>{{ opcional.tipo }}</span>
+          </div>
+        </div>
+        <div class="input-container">
+          <input type="submit" class="submit-btn" value="Criar meu Burger!">
+        </div>
+      </form>
     </div>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import Message from './Message.vue'
+import type { Bread, BurgerOptional, Meat } from '@/interfaces/Burger'
 
 
-interface Ingrediente {
-    id: number;
-    tipo: string;
-}
 
-defineOptions({ name: 'BurgerForm'})
 
-const paes = ref<Ingrediente[] | null>(null)
-const carnes = ref<Ingrediente[] | null>(null)
-const opcionaisdata = ref<Ingrediente[] | null>(null)
+defineOptions({ name: 'BurgerForm' })
+
+const paes = ref<Bread[]>([])
+const carnes = ref<Meat[]>([])
+const opcionaisdata = ref<BurgerOptional[]>([])
 const nome = ref<string>("")
-const pao =  ref<Ingrediente | null>(null)
-const carne =  ref<Ingrediente | null>(null)
+const pao = ref("")
+const carne = ref("")
 const opcionais = ref<string[]>([])
 const status = ref<string>("Solicitado")
 const msg = ref<string | null>(null)
 
 onMounted(() => {
-    getIngredients()
+  getIngredients()
 })
 
 const getIngredients = async () => {
-    const req = await fetch('http://localhost:3000/ingredientes')
-    const data = await req.json()
+  const req = await fetch('http://localhost:3000/ingredientes')
+  const data = await req.json()
 
-    paes.value = data.paes
-    carnes.value = data.carnes
-    opcionaisdata.value = data.opcionais
+  paes.value = data.paes
+  carnes.value = data.carnes
+  opcionaisdata.value = data.opcionais
 }
 
 const createBurger = async () => {
-    const data = {
-        nome: nome.value,
-        pao: pao.value,
-        carne: carne.value,
-        opcionais: opcionais.value,
-        status: "Solicitado"
-    }
+  const data = {
+    nome: nome.value,
+    pao: pao.value,
+    carne: carne.value,
+    opcionais: opcionais.value,
+    status: "Solicitado"
+  }
 
-    const dataJson = JSON.stringify(data)
+  const dataJson = JSON.stringify(data)
 
-    const req = await fetch('http://localhost:3000/burgers', {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: dataJson
-    })
+  const req = await fetch('http://localhost:3000/burgers', {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: dataJson
+  })
 
-    const res = await req.json()
+  const res = await req.json()
 
-    // mensagem do sistema
-    msg.value = 'Pedido realizado com sucesso'
+  // mensagem do sistema
+  msg.value = 'Pedido realizado com sucesso'
 
-    // limpar mensagem da tela
-    setTimeout(() => msg.value = "", 3000)
-    // limpar os campos
-    nome.value = ""
-    pao.value = null
-    carne.value = null
-    opcionais.value = []
+  // limpar mensagem da tela
+  setTimeout(() => msg.value = "", 3000)
+  // limpar os campos
+  nome.value = ""
+  pao.value = ""
+  carne.value = ""
+  opcionais.value = []
 }
 </script>
 
-<style scoped typed="scss">
-    #burger-form {
-        max-width: 400px;
-        margin: 0 auto;
-    }
+<style scoped lang="scss">
+#burger-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
 
-    .input-container {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 20px;
-    }
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
 
-    label {
-        font-weight: bold;
-        margin-bottom: 15px;
-        color: #222;
-        padding: 5px 10px;
-        border-left: 4px solid #fcba03;
-    }
+label {
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #222;
+  padding: 5px 10px;
+  border-left: 4px solid #fcba03;
+}
 
-    input, select {
-        padding: 5px 10px;
-        width: 300px;
-    }
+input,
+select {
+  padding: 5px 10px;
+  width: 300px;
+}
 
-    #opcionais-container {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
+#opcionais-container {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
-    #opcionais-title {
-        width: 100%;
-    }
+#opcionais-title {
+  width: 100%;
+}
 
-    .checkbox-container {
-        display: flex;
-        align-items: flex-start;
-        width: 50%;
-        margin-bottom: 20px;
+.checkbox-container {
+  display: flex;
+  align-items: flex-start;
+  width: 50%;
+  margin-bottom: 20px;
 
-        span, input {
-            width: auto;
-        }
+  span,
+  input {
+    width: auto;
+  }
 
-        span {
-            margin-left: 6px;
-            font-weight: bold;
-        }
-    }
+  span {
+    margin-left: 6px;
+    font-weight: bold;
+  }
+}
 
-    .submit-btn {
-        background-color: #222;
-        color: #fcba03;
-        font-weight: bold;
-        border: 2px solid #222;
-        padding: 10px;
-        font-size: 16px;
-        margin: 0 auto;
-        cursor: pointer;
-        transition: .5s;
+.submit-btn {
+  background-color: #222;
+  color: #fcba03;
+  font-weight: bold;
+  border: 2px solid #222;
+  padding: 10px;
+  font-size: 16px;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: .5s;
 
-        &:hover {
-            background-color: transparent;
-            color: #222;
-        }
-    }
+  &:hover {
+    background-color: transparent;
+    color: #222;
+  }
+}
 </style>
