@@ -5,10 +5,10 @@
 </template>
 
 <script setup lang="ts">
-    defineOptions({ name: 'Footer'})
+  defineOptions({ name: 'Footer'})
 </script>
 
-<style scoped>
+<style scoped typed="scss">
     #footer {
         height: 200px;
         background-color: #222;

@@ -48,7 +48,7 @@ const opcionaisdata = ref<string[] | null>(null)
 const nome = ref<string>("")
 const pao =  ref<string>("")
 const carne =  ref<string>("")
-const opcionais = ref<string>("")
+const opcionais = ref<string[]>([])
 const status = ref<string>("Solicitado")
 const msg = ref<string | null>(null)
 
@@ -97,7 +97,7 @@ const createBurger = async () => {
 }
 </script>
 
-<style scoped>
+<style scoped typed="scss">
     #burger-form {
         max-width: 400px;
         margin: 0 auto;

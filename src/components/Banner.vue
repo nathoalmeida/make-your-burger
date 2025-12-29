@@ -8,7 +8,7 @@
 defineOptions({ name: 'Banner' })
 </script>
 
-<style scoped>
+<style scoped typed="scss">
     #main-banner {
         background-image: url('/img/burger.jpg');
         background-position: 0 -400px;

@@ -103,7 +103,7 @@ const updateBurger = async (id: String, e: Event) => {
 }
 </script>
         
-<style scoped>
+<style scoped typed="scss">
     #burger-table {
         max-width: 1200px;
         margin: 0 auto;   

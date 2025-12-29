@@ -12,10 +12,9 @@
 defineOptions({ name: "Navbar"})
 
 const props = defineProps({logo: String, alt: String})
-
 </script>
 
-<style scoped>
+<style scoped typed="scss">
     #nav {
         background-color: #222;
         border-bottom: 4px solid #111;

@@ -6,10 +6,10 @@
 
 <script setup lang="ts">
 defineOptions({name: "Message"})
-defineProps<{msg: string | null}>()
+defineProps<{msg: string | null}>() // <- usar desse jeito aqui 
 </script>
 
-<style scoped>
+<style scoped typed="scss">
     .message-container {
         color: #004085;
         background-color: #cce5ff;

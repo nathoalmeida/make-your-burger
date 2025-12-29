@@ -19,7 +19,7 @@ const app_name = ref("Make Your Burger")
 </script>
 
 
-<style>
+<style typed="scss">
   * {
     font-family: Arial, Helvetica, sans-serif;
     padding: 0;
