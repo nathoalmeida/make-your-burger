@@ -43,9 +43,9 @@ import Message from './Message.vue';
 defineOptions({ name: 'Dashboard'})
 
 /* constants & variables */
-const burgers = ref<string[] | null>(null)
+const burgers = ref<Burger[] | null>(null)
 const burger_id = ref<string[] | null>(null)
-const status = ref<string[]>([])
+const status = ref<Status[]>([])
 const msg = ref<string | null>(null)
 
 /* lifecycle hooks */
@@ -101,12 +101,26 @@ const updateBurger = async (id: String, e: Event) => {
     msg.value = 'O pedido ' + id + ' foi atualizado para o status: ' + option.value
     setTimeout(() => msg.value = "", 3000)
 }
+
+  interface Burger {
+    id: string;
+    nome: string;
+    pao: string;
+    carne: string;
+    opcionais: string[];
+    status: string;
+  }
+
+  interface Status {
+    id: number;
+    tipo: string;
+  }
 </script>
-        
+
 <style scoped>
     #burger-table {
         max-width: 1200px;
-        margin: 0 auto;   
+        margin: 0 auto;
     }
 
     #burger-table-heading, #burger-table-rows,

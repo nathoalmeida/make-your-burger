@@ -86,7 +86,7 @@
       "opcionais": [
         "Bacon"
       ],
-      "status": "Em produção"
+      "status": "Solicitado"
     },
     {
       "id": "0dbd",
@@ -104,33 +104,23 @@
       "status": "Em produção"
     },
     {
-      "id": "8708",
-      "nome": "Ian",
-      "pao": "3 Queijos",
-      "carne": "Alcatra",
-      "opcionais": [
-        "Cheddar"
-      ],
-      "status": "Finalizado"
-    },
-    {
-      "id": "5395",
-      "nome": "Teste",
-      "pao": "Italiano Branco",
-      "carne": "Maminha",
-      "opcionais": [
-        "Bacon",
-        "Cheddar"
-      ],
-      "status": "Solicitado"
-    },
-    {
       "id": "b423",
       "nome": "Teste2",
       "pao": "Parmesão e Orégano",
       "carne": "Maminha",
       "opcionais": [],
       "status": "Solicitado"
+    },
+    {
+      "id": "ca04",
+      "nome": "Teste3",
+      "pao": "Parmesão e Orégano",
+      "carne": "Veggie burger",
+      "opcionais": [
+        "Cheddar",
+        "Tomate"
+      ],
+      "status": "Finalizado"
     }
   ]
 }
