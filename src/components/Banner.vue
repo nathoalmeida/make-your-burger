@@ -1,11 +1,15 @@
 <template>
   <div id="main-banner">
-    <h1>Make Your Burger</h1>
+    <h1>{{ t('title') }}</h1>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
 defineOptions({ name: 'Banner' })
+
+const { t } = useI18n()
 </script>
 
 <style scoped lang="scss">

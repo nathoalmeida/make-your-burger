@@ -5,12 +5,22 @@
     </router-link>
     <router-link to="/">Home</router-link>
     <router-link to="/pedidos">Pedidos</router-link>
+    <div class="locale-changer">
+      <select v-model="$i18n.locale">
+        <option v-for="locale in availableLocales" :key="`locale-${locale}`" :value="locale">
+          {{ locale }}
+        </option>
+      </select>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 defineOptions({ name: 'Navbar' })
 defineProps<{ logo: string; alt: string }>()
+
+const { t, locale, availableLocales } = useI18n()
 </script>
 
 <style scoped lang="scss">
@@ -37,10 +47,27 @@ defineProps<{ logo: string; alt: string }>()
   a:hover {
     color: #fff;
   }
+
+  p {
+    color: #fcba03;
+    margin-right: 20px;
+  }
 }
 
 #logo {
   width: 40px;
   height: 40px;
+}
+
+.locale-changer {
+  margin: 0;
+
+  select {
+    background-color: #333;
+    color: #fcba03;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+  }
 }
 </style>
