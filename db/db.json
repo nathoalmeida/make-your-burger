@@ -83,9 +83,7 @@
       "nome": "x",
       "pao": "Parmesão e Orégano",
       "carne": "Maminha",
-      "opcionais": [
-        "Bacon"
-      ],
+      "opcionais": ["Bacon"],
       "status": "Solicitado"
     },
     {
@@ -93,14 +91,7 @@
       "nome": "Nathi",
       "pao": "3 Queijos",
       "carne": "Picanha",
-      "opcionais": [
-        "Bacon",
-        "Salame",
-        "Cebola roxa",
-        "Pepino",
-        "Tomate",
-        "Cheddar"
-      ],
+      "opcionais": ["Bacon", "Salame", "Cebola roxa", "Pepino", "Tomate", "Cheddar"],
       "status": "Em produção"
     },
     {
@@ -116,10 +107,7 @@
       "nome": "Teste3",
       "pao": "Parmesão e Orégano",
       "carne": "Veggie burger",
-      "opcionais": [
-        "Cheddar",
-        "Tomate"
-      ],
+      "opcionais": ["Cheddar", "Tomate"],
       "status": "Finalizado"
     }
   ]

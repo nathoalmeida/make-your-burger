@@ -19,7 +19,7 @@ const i18n = createI18n({
     'en-US': english.messages,
     'es-UY': espanol.messages,
   },
-}) // vou colocar todas essas mensagens depois em arquivos separados
+})
 
 app.use(i18n)
 app.use(createPinia())

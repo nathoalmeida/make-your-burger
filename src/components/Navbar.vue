@@ -3,8 +3,11 @@
     <router-link to="/" id="logo-url">
       <img :src="logo" :alt="alt" id="logo" />
     </router-link>
-    <router-link to="/">Home</router-link>
-    <router-link to="/pedidos">Pedidos</router-link>
+    <div id="greet">
+      <p>{{ t('greet', { user: 'Mike' }) }}</p>
+    </div>
+    <router-link to="/">{{ t('nav.home') }}</router-link>
+    <router-link to="/pedidos">{{ t('nav.pedidos') }}</router-link>
     <div class="locale-changer">
       <select v-model="$i18n.locale">
         <option v-for="locale in availableLocales" :key="`locale-${locale}`" :value="locale">
@@ -31,6 +34,10 @@ const { t, locale, availableLocales } = useI18n()
   display: flex;
   justify-content: flex-end;
   align-items: center;
+
+  #greet {
+    margin-right: 20px;
+  }
 
   #logo-url {
     margin: auto;
