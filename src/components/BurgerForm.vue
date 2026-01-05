@@ -10,8 +10,8 @@
         <div class="input-container">
           <label for="pao">Escolha o pão:</label>
           <select name="pao" id="pao" v-model="pao">
-            <option value="">Selecione o seu pão</option>
-            <option v-for="pao in paes" :key="pao.id" :value="pao.tipo">{{ pao.tipo }}</option>
+            <option value="">{{ t('bread.placeholder')}}</option>
+            <option v-for="pao in paes" :key="pao.id" :value="pao.tipo">{{ t(`bread.tipo.${pao.tipo}`) }}</option>
           </select>
         </div>
         <div class="input-container">
@@ -37,7 +37,8 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onBeforeUpdate, onMounted, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import Message from './Message.vue'
 import type { Bread, BurgerOptional, Meat } from '@/interfaces/Burger'
 
@@ -46,6 +47,7 @@ import type { Bread, BurgerOptional, Meat } from '@/interfaces/Burger'
 
 defineOptions({ name: 'BurgerForm' })
 
+const { t } = useI18n()
 const paes = ref<Bread[]>([])
 const carnes = ref<Meat[]>([])
 const opcionaisdata = ref<BurgerOptional[]>([])

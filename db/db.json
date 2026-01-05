@@ -3,19 +3,19 @@
     "paes": [
       {
         "id": 1,
-        "tipo": "Italiano Branco"
+        "tipo": "ITALIANO_BRANCO"
       },
       {
         "id": 2,
-        "tipo": "3 Queijos"
+        "tipo": "TRES_QUEIJOS"
       },
       {
         "id": 3,
-        "tipo": "Parmesão e Orégano"
+        "tipo": "PARMESAO_OREGANO"
       },
       {
         "id": 4,
-        "tipo": "Integral"
+        "tipo": "INTEGRAL"
       }
     ],
     "carnes": [
@@ -83,7 +83,9 @@
       "nome": "x",
       "pao": "Parmesão e Orégano",
       "carne": "Maminha",
-      "opcionais": ["Bacon"],
+      "opcionais": [
+        "Bacon"
+      ],
       "status": "Solicitado"
     },
     {
@@ -91,7 +93,14 @@
       "nome": "Nathi",
       "pao": "3 Queijos",
       "carne": "Picanha",
-      "opcionais": ["Bacon", "Salame", "Cebola roxa", "Pepino", "Tomate", "Cheddar"],
+      "opcionais": [
+        "Bacon",
+        "Salame",
+        "Cebola roxa",
+        "Pepino",
+        "Tomate",
+        "Cheddar"
+      ],
       "status": "Em produção"
     },
     {
@@ -107,8 +116,21 @@
       "nome": "Teste3",
       "pao": "Parmesão e Orégano",
       "carne": "Veggie burger",
-      "opcionais": ["Cheddar", "Tomate"],
+      "opcionais": [
+        "Cheddar",
+        "Tomate"
+      ],
       "status": "Finalizado"
+    },
+    {
+      "id": "a6a2",
+      "nome": "",
+      "pao": "ITALIANO_BRANCO",
+      "carne": "Maminha",
+      "opcionais": [
+        "Bacon"
+      ],
+      "status": "Solicitado"
     }
   ]
 }
